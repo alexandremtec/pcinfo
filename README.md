@@ -1,11 +1,12 @@
 # scripts-uteis
 ## Scripts úteis para sistemas GNU/Linux
 
-### PC Info 
+### -PC Info 
 Apresenta informações de hardware e Sistema operacional.
 
-### Backup
+### -Backup
 Automatiza a execução de cópias de segurança
+
 Modo de uso:
 ```
 ./script [opção] [origem] [destino]
