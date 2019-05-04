@@ -16,10 +16,12 @@ function verificar(){
 
 function full(){
 	echo "Backup iniciado em $DATA." >> $LOG_DIR/backup-full
-	tar -cvf $2".tar" $1 >> $LOG_DIR/backup-full 2> $LOG_DIR/backup-erro
+	echo "Backup Full iniciado em $DATA." >> $LOG_DIR/backup-erro
+	tar -cvf $/$DATA".tar" $1 >> $LOG_DIR/backup-full 2> $LOG_DIR/backup-erro
 	if [ $? == 0 ] 
 	then
-		echo "Backup finalizado em $DATA." >> $LOG_DIR/backup-full
+		echo -e "Backup finalizado em $DATA.\n\n\n\n" >> $LOG_DIR/backup-full
+		echo -e "Backup Full finalizado em $DATA.\n\n\n\n" >> $LOG_DIR/backup-erro
 	else
 		echo "OPS, ocorreu algum imprevisto, favor visualizar o arquivo de erro."
 	fi
@@ -27,10 +29,12 @@ function full(){
 
 function inc(){
 	echo "Backup iniciado em $DATA." >> $LOG_DIR/backup-incremental
+	echo "Backup Incremental iniciado em $DATA." >> $LOG_DIR/backup-erro
 	rsync -Cravzp $1 $2 >> $LOG_DIR/backup-incremental 2> $LOG_DIR/backup-erro
 	if [ $? == 0 ]
 	then
-		echo "Backup finalizado em $DATA." >> $LOG_DIR/backup-incremental
+		echo -e "Backup finalizado em $DATA.\n\n\n\n" >> $LOG_DIR/backup-incremental
+		echo -e "Backup Incremental finalizado em $DATA.\n\n\n\n" >> $LOG_DIR/backup-erro
 	else
 		echo "OPS, ocorreu algum imprevisto, favor visualizar o ar
     quivo de erro."
